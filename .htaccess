@@ -1,0 +1,7 @@
+Options -Indexes
+RewriteEngine On
+
+# Rewrite rule to redirect all requests to a specific PHP file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ index.php?args=$1 [L,QSA]

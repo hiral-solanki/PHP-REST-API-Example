@@ -5,3 +5,4 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ index.php?args=$1 [L,QSA]
+RewriteRule ^([^/]+)/([0-9]+)/?$ index.php?args=$1&page=$2 [L,QSA]

@@ -337,16 +337,23 @@ if(is_array($_REQUEST) && count($_REQUEST)!=0)
 				{
 					if($_REQUEST['args']=='alluser')
 					{
-						//$page=isset($_POST['page'])?$_POST['page']:1;
-						//$limit=5;
-						//$offset = ($page -1) * $limit;
-						$user = $db->getAllData('users_ang_18','*');
-						//print_r($user);
-						//exit;
-						if($user)
-						{ echo json_encode(['result'=>true,'data'=>$user]); }
+						if(isset($_REQUEST['page'])){
+							$page=$_REQUEST['page'];
+						}
 						else
-						{ echo json_encode(['result'=>false,'error'=>'Invalid Request']); }
+						{ $page = 1; }
+						$limit=5;
+						$offset = ($page -1) * $limit;
+						$row = $db->checkData('users_ang_18','*');
+						$totalpage=ceil($row/$limit);
+						$sendlimit = $offset.', '.$limit;
+						$user = $db->getAllData('users_ang_18','*','','','','',$sendlimit);
+						if($user)
+						{ 
+							echo json_encode(['result'=>true,'data'=>$user,'totalRec'=>$row,'page'=>$page,'totalPage'=>$totalpage,'noOfRecPerPage'=>$limit]); 
+						}
+						else
+						{ echo json_encode(['result'=>false,'error'=>'Invalid Request']); } 
 					}
 
 				}

@@ -103,9 +103,12 @@ class DbConnClass{
 		$data = $this->getResult($sql);
 		return $data;
 	}
-	public function checkData($table,$field,$where)
+	public function checkData($table,$field,$where='')
 	{
-		$sql='select '.$field.' from '.$table.' where '.$where;	
+		$sql='select '.$field.' from '.$table;
+		if($where!=''){
+			$sql.=' where '.$where;
+		}	
 		$row = $this->getRow($sql);
 		return $row;
 	}

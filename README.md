@@ -1,3 +1,3 @@
 PHP REST API EXAMPLE
-This api is backend for angular 18 Usermanagement example.
-It includes classes for Backend API work for Angular Usermanagement Project.
+This API is backend for angular 18 User Management example.
+It includes classes for Backend API work for Angular User Management Project.
